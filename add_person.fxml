@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import org.example.Person?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.collections.FXCollections?>
+<GridPane alignment="CENTER" hgap="5" vgap="5" xmlns:fx="http://javafx.comfxml" fx:controller="org.example.PersonController">
+    <padding>
+        <Insets bottom="15" left="15" right="15" top="15"/>
+    </padding>
+
+    <children>
+
+        <Text text="Dodavanje novog korisnika" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.columnSpan="2">
+            <font>
+                <Font size="30"/>
+            </font>
+        </Text>
+
+        <Label text="Ime :" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <Label text="Prezime :" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <Label text="Adresa :" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <Label text="Brzina (MB/s) :" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <Label text="Velicina (GB) :" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+        <Label text="Ugovor na (god) :" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+
+
+
+        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="ime"/>
+        <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="prezime"/>
+        <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="adresa"/>
+        <ChoiceBox fx:id="brzina" value="2" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <ChoiceBox fx:id="velicina" value="2" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <ChoiceBox fx:id="ugovor" value="2" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+
+
+
+
+        <HBox alignment="TOP_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <children>
+                <Button mnemonicParsing="true" text="_Snimi" onAction="#savePerson"/>
+                <Button mnemonicParsing="true" text="_Ocisti" onAction="#clearPerson"/>
+                <Button mnemonicParsing="true" text="_Obrisi" onAction="#deletePerson"/>
+                <Button mnemonicParsing="true" text="_Izlaz"  onAction="#closeForm"/>
+            </children>
+        </HBox>
+
+    </children>
+
+
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="344.0" prefWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+        <children>
+            <TableView fx:id="personTableView" prefHeight="336.0" prefWidth="445.8"
+                       AnchorPane.bottomAnchor="0.0"
+                       AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                       AnchorPane.topAnchor="0.0">
+                <columns>
+                    <TableColumn text="Ime" prefWidth="75.0">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="ime"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Prezime" prefWidth="75.0">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="prezime"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Adresa" prefWidth="75.0">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="adresa"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Brzina" prefWidth="75.0">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="brzina"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Velicina paketa" prefWidth="75.0">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="velicina"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Ugovor" prefWidth="75.0">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="ugovor"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <Person ime="John" prezime="Wick" adresa="London" brzina="5" velicina="100" ugovor="2" />
+                        <Person ime="Joe" prezime="Doe" adresa="Manchester" brzina="10" velicina="Flat" ugovor="2" />
+
+                    </FXCollections>
+                </items>
+            </TableView>
+        </children>
+    </AnchorPane>
+
+
+</GridPane>

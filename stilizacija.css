@@ -1,0 +1,20 @@
+
+.label {
+    -fx-text-fill: blue;
+}
+
+.text-field {
+    -fx-background-color: #637080;
+    -fx-text-fill: white;
+}
+
+
+
+.button:pressed {
+    -fx-border-color: #e0d909;
+    -fx-background-color: #e0d909;
+            -fx-text-fill: green;
+}
+
+
+
